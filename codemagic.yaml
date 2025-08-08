@@ -1,0 +1,33 @@
+workflows:
+  default-workflow:
+    name: Default Workflow
+    environment:
+      flutter: stable
+      xcode: latest
+      cocoapods: latest
+    triggering:
+      events:
+        - push
+      branch_patterns:
+        - pattern: master
+          include: true
+          source: true
+    scripts:
+      - name: Get Flutter packages
+        script: | 
+          flutter pub get
+      - name: Build Flutter (Web)
+        script: | 
+          flutter build web --release
+    artifacts:
+      - build/web/**
+    publishing:
+      email:
+        recipients:
+          - moh244415@gmail.com
+        success:
+          - true
+        failure:
+          - true
+
+
