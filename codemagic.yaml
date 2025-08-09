@@ -14,10 +14,10 @@ workflows:
           source: true
     scripts:
       - name: Get Flutter packages
-        script: | 
+        script: |
           flutter pub get
       - name: Build Flutter (Web)
-        script: | 
+        script: |
           flutter build web --release
     artifacts:
       - build/web/**
@@ -25,9 +25,7 @@ workflows:
       email:
         recipients:
           - moh244415@gmail.com
-        success:
-          - true
-        failure:
-          - true
+        success: true
+        failure: true
 
 
